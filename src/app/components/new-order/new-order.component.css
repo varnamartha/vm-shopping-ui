@@ -1,0 +1,12 @@
+.buttonWithSpinner {
+    float: left;
+}
+
+.spinner {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.newOrderContainer {
+    padding-bottom: 60px !important;
+}
