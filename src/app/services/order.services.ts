@@ -6,6 +6,7 @@ import { Order, OrderResponse } from '../models/orden-models';
 export class OrderServices
 {    
     orders : Array<Order> = [];
+    urlOrerservicesBase = "https://localhost:44376/api/Order";
 
     constructor (private _httpClient: HttpClient)
     {       
@@ -14,17 +15,18 @@ export class OrderServices
 
     _postOrder(order: Order)
     {
-        return this._httpClient.post<OrderResponse>("https://localhost:44376/api/Order",order);
+        return this._httpClient.post<OrderResponse>(this.urlOrerservicesBase,order);
     }
 
     _getOrdersByEmail(email:string)
     {
-        let url = 'https://localhost:44376/api/order/list?email=' + email;
+        let url = this.urlOrerservicesBase + '/list?email=' + email;
         return this._httpClient.get<OrderResponse[]>(url);
     }
 
     _getOrderDetails(orderId:number)
     {
-        this._httpClient.get('https://localhost:44376/api/Order/1').subscribe(data => {console.log(data)});
+        let url = this.urlOrerservicesBase + '/' + orderId;
+        return this._httpClient.get<OrderResponse>(url);
     }
 }

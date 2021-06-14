@@ -16,7 +16,7 @@
                     <th scope="col">Producto</th>
                     <th scope="col">Estado de la orden</th>
                     <th scope="col">Acción</th>
-                    <th scope="col">Detalle</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,9 +26,10 @@
                     <td scope="col">{{order.status.status}}</td>
                     <td scope="col">
                         <a *ngIf="order.status.status =='CREATED'" href={{order.urlRedirection}}>Pagar</a>
-                        <!-- <span *ngIf="order.status.status !='CREATED'"></span> -->
                     </td>
-                    <td scope="col"></td>
+                    <td scope="col">
+                        <a [routerLink]="['orderdetails',order.shoppingOrderId]">Detalle de la compra.</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
