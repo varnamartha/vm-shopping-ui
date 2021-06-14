@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import { Order } from '../models/orden-models';
-import { OrderResponse } from '../models/order-response-models';
+import { Order, OrderResponse } from '../models/orden-models';
 
 @Injectable()
 export class OrderServices
 {    
+    orders : Array<Order> = [];
+
     constructor (private _httpClient: HttpClient)
     {       
         console.log("OrderServices listo!!")
@@ -18,7 +19,8 @@ export class OrderServices
 
     _getOrdersByEmail(email:string)
     {
-        this._httpClient.get('https://localhost:44376/api/Order/list/varnamartha@gmail.com').subscribe(data => {console.log(data)});
+        let url = 'https://localhost:44376/api/order/list?email=' + email;
+        return this._httpClient.get<OrderResponse[]>(url);
     }
 
     _getOrderDetails(orderId:number)

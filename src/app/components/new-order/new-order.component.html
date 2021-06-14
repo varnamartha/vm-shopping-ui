@@ -1,11 +1,11 @@
 <div class="container newOrderContainer">
 
     <div class="card" style="width: 18rem;">
-        <img src='{{product.ImgUrl}}' class="card-img-top" alt="{{product.Name}}">
+        <img src='{{product.imgUrl}}' class="card-img-top" alt="{{product.name}}">
         <div class="card-body">
-            <h5 class="card-title">{{product.Name}}</h5>
-            <p class="card-text">Descripción: {{product.Description}}</p>
-            <p class="card-text">Precio: {{product.Price}} {{product.Currency}}</p>
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">Descripción: {{product.description}}</p>
+            <p class="card-text">Precio: {{product.price}} {{product.currency}}</p>
         </div>
     </div>
     <form [formGroup]="createOrderForm" (ngSubmit)="createOrder()">
