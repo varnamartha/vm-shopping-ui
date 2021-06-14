@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product-models';
-import {OrderServices} from '../../services/order.services';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { OrderServices } from '../../services/order.services';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Client } from '../../models/client-models';
 import { Order } from '../../models/orden-models';
-import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-new-order',
@@ -15,16 +14,18 @@ import { stringify } from '@angular/compiler/src/util';
 export class NewOrderComponent implements OnInit {
 
   product: Product; 
-  createOrderForm: FormGroup = this.fb.group({
-    name : [''],
-    email : [''],
-    phone : ['']
-  });
+  createOrderForm: FormGroup; 
+  
   isShowingSpinner = false;
 
   constructor( private orderServices: OrderServices, private fb: FormBuilder)
   { 
     this.product = new Product(4,"SAMSUNG - Televisor inteligente", "SAMSUNG - Televisor inteligente de 40 pulgadas LED, FHD de 1080P (modelo 2019).",100,"USD","../../../assets/img/4QEXSUD65VCUNJWMSOPZQXXYQI.jpg");  
+    this.createOrderForm = this.fb.group({
+      name : [''],
+      email : [''],
+      phone : ['']
+    });
   } 
 
   ngOnInit(): void {
