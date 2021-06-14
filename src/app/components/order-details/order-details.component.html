@@ -1,0 +1,11 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{this.order?.product?.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{this.order?.product?.description}}</h6>
+        <p class="card-text">Precio: {{this.order?.product?.price}}</p>
+        <p class="card-text">Estado de Pago: {{this.order?.status?.status}}</p>
+    </div>
+    <div class="card-body">
+        <a href="/orders">Volver ...</a>
+    </div>
+</div>

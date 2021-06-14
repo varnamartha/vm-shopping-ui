@@ -1,0 +1,39 @@
+<div class="container newOrderContainer">
+
+    <div class="card" style="width: 18rem;">
+        <img src='{{product.imgUrl}}' class="card-img-top" alt="{{product.name}}">
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">Descripción: {{product.description}}</p>
+            <p class="card-text">Precio: {{product.price}} {{product.currency}}</p>
+        </div>
+    </div>
+    <form [formGroup]="createOrderForm" (ngSubmit)="createOrder()">
+        <div class="mb-3">
+            <div class="mb-3">
+                <label for="clientNombreLabel" class="form-label">Nombre</label>
+                <input type="text" formControlName="name" class="form-control" id="clientNombreInput" required>
+            </div>
+            <label for="clientEmailLabel" class="form-label">Email</label>
+            <input type="email" formControlName="email" class="form-control" id="clientEmailInput" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">Email incorrecto.</div>
+        </div>
+        <div class="mb-3">
+            <label for="clientPhoneLabel" class="form-label">Telefono</label>
+            <input type="text" formControlName="phone" class="form-control" id="clientPhoneInput" required>
+        </div>
+        <div>
+            <div class="buttonWithSpinner">
+                <input type="submit" class="btn btn-primary" value="Crear Orden">
+            </div>
+            <div class="spinner-border buttonWithSpinner spinner" role="status" *ngIf="isShowingSpinner">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+
+        </div>
+
+
+    </form>
+
+
+</div>

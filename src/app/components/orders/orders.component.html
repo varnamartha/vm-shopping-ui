@@ -1,0 +1,37 @@
+<div class="row">
+    <form [formGroup]="orderSearch" (ngSubmit)="searchOrders()" class="d-flex">
+        <input class="form-control me-2" formControlName="email" type="email" placeholder="Escriba un correo" aria-label="Buscar Orednes">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
+    <div *ngIf="notData">
+        <h5>No hay ordenes de compras realizadas con este email.</h5>
+    </div>
+
+    <div *ngIf="visible">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Número de Orden</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Estado de la orden</th>
+                    <th scope="col">Acción</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td scope="col">{{order.shoppingOrderId}}</td>
+                    <td scope="col">{{order.product.name}}</td>
+                    <td scope="col">{{order.status.status}}</td>
+                    <td scope="col">
+                        <a *ngIf="order.status.status =='CREATED'" href={{order.urlRedirection}}>Pagar</a>
+                    </td>
+                    <td scope="col">
+                        <a [routerLink]="['orderdetails',order.shoppingOrderId]">Detalle de la compra.</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
